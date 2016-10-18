@@ -214,6 +214,7 @@
             var countUpEtherscan = new CountUp('blockEtherscan', 0, 0, 0, 1, countUpOptions);
             var countUpCypher = new CountUp('blockCypher', 0, 0, 0, 1, countUpOptions);
             var countUpChain = new CountUp('blockChain', 0, 0, 0, 1, countUpOptions);
+            var countUpEthrex = new CountUp('blockEthrex', 0, 0, 0, 1, countUpOptions);
             var countUpGasLimit = new CountUp('gasLimit', 0, 0, 0, 1, countUpOptions);
             var countUpDifficulty = new CountUp('difficulty', 0, 0, 0, 1, countUpOptions);
             var countUpEthbtc = new CountUp('ethbtc', 0, 0, 8, 1, countUpOptions);
@@ -223,6 +224,7 @@
             countUpEtherscan.start();
             countUpCypher.start();
             countUpChain.start();
+            countUpEthrex.start();
             countUpGasLimit.start();
             countUpDifficulty.start();
             countUpEthbtc.start();
@@ -337,7 +339,7 @@
                             if ('hash' in data[0]) {
                                 record.ethrex.block = data[0].number;
                                 record.ethrex.hash = data[0].hash;
-                                countUpChain.update(record.ethrex.block);
+                                countUpEthrex.update(record.ethrex.block);
                                 $('#hashEthrex').html(record.ethrex.hash.slice(0, 10) + '...');
                                 if (record.ethrex.block === record.lastBlock) {
                                     $('#blockEthrex').addClass('blue-text text-accent-2');
