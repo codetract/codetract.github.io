@@ -335,7 +335,6 @@
                         type: 'GET',
                         dataType: 'json',
                         success: function(data) {
-                            console.log(data[0].hash);
                             if ('hash' in data[0]) {
                                 record.ethrex.block = data[0].number;
                                 record.ethrex.hash = data[0].hash;
