@@ -1,1 +1,470 @@
-hello world
+<!DOCTYPE html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <!--meta-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
+    <title>CodeTract - Hardfork countdown</title>
+    <meta name="description" content="CodeTract is a startup that is building smart contracts on the ethereum blockchain." />
+    <meta property="og:title" content="CodeTract - Hardfork countdown" />
+    <meta property="og:url" content="https://fork.codetract.io/" />
+    <meta property="og:image" content="https://codetract.io/img/logo.png" />
+    <meta property="og:description" content="Countdown to the hardfork party at the hardfork cafe and join us in the celebration." />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@codetractio" />
+    <meta name="twitter:title" content="CodeTract - Hardfork countdown" />
+    <meta name="twitter:description" content="Countdown to the hardfork party at the hardfork cafe and join us in the celebration." />
+    <meta name="twitter:image" content="https://codetract.io/img/logo.png" />
+
+    <!--css-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/materialize/0.97.7/css/materialize.min.css" integrity="sha256-bZkavcZrFlXfus3527w/pLbvXgyqnrHbNdMpwNXf1dA=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/fontawesome/4.6.3/css/font-awesome.min.css" integrity="sha256-AIodEDkC8V/bHBkfyxzolUMw57jeQ9CauwhVW6YJ9CA=" crossorigin="anonymous">
+    <link href="css/style.css" type="text/css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+    <!--navigation-->
+    <nav id="nav_f" class="blue-grey darken-4">
+        <div class="container nav-wrapper">
+            <a href="https://codetract.io" class="brand-logo">
+                <img class="nav-logo" src="img/logo.svg"></img>
+                <span class="blue-text text-accent-2">Code</span>Tract
+            </a>
+        </div>
+    </nav>
+
+    <!--intro-->
+    <div class="section scrollspy blue-grey lighten-5" id="product">
+        <div class="container">
+            <h4><i class="medium material-icons blue-text text-accent-2" style="vertical-align: bottom;">alarm</i>Hardfork countdown</h4>
+            <br />
+            <h3><span id="currentBlock" class="blue-text text-accent-2"></span> / <span id="forkBlock"></span><span style="font-size:0.4em;">&nbsp&nbspblock&nbsp</span><span id="countdown" style="font-size:0.4em;" class="red-text"></span></h3>
+            <h5><i id="gasLimitArrow" class="material-icons green-text" style="vertical-align: middle;">keyboard_arrow_up</i><span id="gasLimit"></span><span style="font-size:0.6em;">&nbsp&nbspgas limit</span></h5>
+            <h5><i id="difficultyArrow" class="material-icons green-text" style="vertical-align: middle;">keyboard_arrow_up</i><span id="difficulty"></span><span style="font-size:0.6em;">&nbsp&nbspdifficulty</span></h5>
+            <h5><i id="ethbtcArrow" class="material-icons green-text" style="vertical-align: middle;">keyboard_arrow_up</i><span id="ethbtc"></span><span style="font-size:0.6em;">&nbsp&nbspethbtc</span></h5>
+            <h5><span id="timeSinceLast" class="blue-text text-accent-2">0</span><span style="font-size:0.6em;">&nbsp&nbspsince last block</span></h5>
+            <table>
+                <thead>
+                    <tr>
+                        <th>source</th>
+                        <th>block number</th>
+                        <th>block hash</th>
+                    </tr>
+                </thead>
+                <tr>
+                    <td>infura.io</td>
+                    <td id="blockInfura">...</td>
+                    <td id="hashInfura">...</td>
+                </tr>
+                <tr>
+                    <td>etherscan.io</td>
+                    <td id="blockEtherscan">...</td>
+                    <td id="hashEtherscan">...</td>
+                </tr>
+                <tr>
+                    <td>etherchain.com</td>
+                    <td id="blockChain">...</td>
+                    <td id="hashChain">...</td>
+                </tr>
+                <tr>
+                    <td>blockcypher.com</td>
+                    <td id="blockCypher">...</td>
+                    <td id="hashCypher">...</td>
+                </tr>
+                <tr>
+                    <td>ethrex.io</td>
+                    <td id="blockEthrex">...</td>
+                    <td id="hashEthrex">...</td>
+                </tr>
+            </table>
+            <br />
+            <h5>Hardfork</h5>
+            <p>
+                This hardfork aims to mitigate recent attacks on the ethereum network. Refer to the <a href="https://blog.ethereum.org/2016/10/13/announcement-imminent-hard-fork-eip150-gas-cost-changes/" target="_blank">official announcement</a> for more
+                information.
+            </p>
+        </div>
+    </div>
+
+    <!--footer-->
+    <footer class="page-footer blue-grey darken-4 scrollspy" id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 m6 s12">
+                    <h5 class="white-text">Contact</h5>
+                    <ul>
+                        <li class="white-text">contact@codetract.io</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col l6 m6 s12">
+                    <h5 class="white-text">Social</h5>
+                    <ul>
+                        <li>
+                            <a class="white-text" href="https://github.com/codetract">
+                                <i class="small fa fa-githubAdBlock"></i>
+                            </a>&nbsp
+                            <a class="white-text" href="https://www.reddit.com/user/codetractio">
+                                <i class="small fa fa-redditAdBlock"></i>
+                            </a>&nbsp
+                            <a class="white-text" href="https://medium.com/@codetractio">
+                                <i class="small fa fa-mediumAdBlock"></i>
+                            </a>&nbsp
+                            <a class="white-text" href="https://twitter.com/codetractio">
+                                <i class="small fa fa-twitterAdBlock"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright blue-grey darken-4">
+            <div class="container">
+                Copyright © 2016 CODETRACT PTE. LTD., SINGAPORE. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!--scripts-->
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/materialize/0.97.7/js/materialize.min.js" integrity="sha256-YUCh5+Y7KLYFkfuGkmKTo2Bsm2+RHjbG7aefaPF/cBg=" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/countupjs/1.7.1/countUp.min.js" integrity="sha256-9vWhvsKDjFldeHpXPfbzJxt2cotNqMonlIVp9cQc690=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.countdown/2.1.0/jquery.countdown.min.js" integrity="sha256-PyWryGIAGpyGoV8nA5NbHRzmYafrLR/xtJ3aymyhmxA=" crossorigin="anonymous"></script>
+    <script src="https://rawcdn.githack.com/ethereum/web3.js/0.16.0/dist/web3.min.js"></script>
+
+    <script>
+        $(function() {
+            var hardForkBlock = 2463000;
+            var record = {
+                infura: {
+                    block: 1,
+                    hash: '...',
+                    wait: 3000,
+                    last: 1
+                },
+                etherscan: {
+                    block: 1,
+                    hash: '...',
+                    wait: 15000,
+                    last: 1
+                },
+                blockcypher: {
+                    block: 1,
+                    hash: '...',
+                    wait: 25000,
+                    last: 1
+                },
+                etherchain: {
+                    block: 1,
+                    hash: '...',
+                    wait: 15000,
+                    last: 1
+                },
+                ethrex: {
+                    block: 1,
+                    hash: '...',
+                    wait: 15000,
+                    last: 1
+                },
+                poloniex: {
+                    wait: 15000,
+                    last: 1
+                },
+                lastBlock: 1,
+                gasLimit: 0,
+                difficulty: 0,
+                ethbtc: 0,
+                timestamp: 0
+            };
+            var countUpOptions = {  
+                useEasing: false,
+                  useGrouping: true,
+                  separator: ',',
+                  decimal: '.',
+                  prefix: '',
+                  suffix: ''
+            };
+            var regex = new RegExp(',', 'g');
+            var web3 = new Web3(new Web3.providers.HttpProvider('https://mainnet.infura.io/codetract'));
+            var filter = web3.eth.filter('latest');
+            filter.watch(function(error, log) {
+                if (error) {
+
+                } else {
+                    updateInfura();
+                    setTimeout(function() {
+                        updateAll();
+                    }, 1000);
+                }
+            });
+            record.poloniex.last = new Date().getTime();
+            $.getJSON('https://poloniex.com/public?command=returnTicker', function(data) {
+                if ('BTC_ETH' in data) {
+                    record.ethbtc = parseFloat(data['BTC_ETH'].last);
+                    countUpEthbtc.update(record.ethbtc);
+                }
+            });
+            updateAll();
+            var countUpCurrentBlock = new CountUp('currentBlock', 0, 0, 0, 1, countUpOptions);
+            var countUpForkBlock = new CountUp('forkBlock', 0, hardForkBlock, 0, 0.5, countUpOptions);
+            var countUpInfura = new CountUp('blockInfura', 0, 0, 0, 1, countUpOptions);
+            var countUpEtherscan = new CountUp('blockEtherscan', 0, 0, 0, 1, countUpOptions);
+            var countUpCypher = new CountUp('blockCypher', 0, 0, 0, 1, countUpOptions);
+            var countUpChain = new CountUp('blockChain', 0, 0, 0, 1, countUpOptions);
+            var countUpGasLimit = new CountUp('gasLimit', 0, 0, 0, 1, countUpOptions);
+            var countUpDifficulty = new CountUp('difficulty', 0, 0, 0, 1, countUpOptions);
+            var countUpEthbtc = new CountUp('ethbtc', 0, 0, 8, 1, countUpOptions);
+            countUpCurrentBlock.start();
+            countUpForkBlock.start();
+            countUpInfura.start();
+            countUpEtherscan.start();
+            countUpCypher.start();
+            countUpChain.start();
+            countUpGasLimit.start();
+            countUpDifficulty.start();
+            countUpEthbtc.start();
+            setInterval(function() {
+                updateAll();
+            }, 60 * 1000);
+
+            function updateInfura() {
+                if (new Date().getTime() - record.infura.last > record.infura.wait) {
+                    record.infura.last = new Date().getTime();
+                    web3.eth.getBlock('latest', function(error, result) {
+                        if (!error) {
+                            record.infura.block = result.number;
+                            record.infura.hash = result.hash;
+                            countUpInfura.update(record.infura.block);
+                            $('#hashInfura').html(record.infura.hash.slice(0, 10) + '...');
+                            if (record.infura.block === record.lastBlock) {
+                                $('#blockInfura').addClass('blue-text text-accent-2');
+                            }
+                            if (record.infura.block > record.lastBlock) {
+                                resetHighlight();
+                                $('#blockInfura').addClass('blue-text text-accent-2');
+                                record.lastBlock = record.infura.block;
+                                record.gasLimit = result.gasLimit;
+                                record.difficulty = result.difficulty;
+                                record.timestamp = result.timestamp * 1000;
+                                updateTimer();
+                            }
+                        }
+                    });
+                }
+            }
+
+            function updateEtherscan() {
+                if (new Date().getTime() - record.etherscan.last > record.etherscan.wait) {
+                    record.etherscan.last = new Date().getTime();
+                    $.getJSON('https://api.etherscan.io/api?module=proxy&action=eth_getBlockByNumber&tag=latest&boolean=false', function(data) {
+                        if ('result' in data) {
+                            record.etherscan.block = parseInt(data.result.number);
+                            record.etherscan.hash = data.result.hash;
+                            countUpEtherscan.update(record.etherscan.block);
+                            $('#hashEtherscan').html(record.etherscan.hash.slice(0, 10) + '...');
+                            if (record.etherscan.block === record.lastBlock) {
+                                $('#blockEtherscan').addClass('blue-text text-accent-2');
+                            }
+                            if (record.etherscan.block > record.lastBlock) {
+                                resetHighlight();
+                                $('#blockEtherscan').addClass('blue-text text-accent-2');
+                                record.lastBlock = record.etherscan.block;
+                                record.gasLimit = parseInt(data.result.gasLimit);
+                                record.difficulty = parseInt(data.result.difficulty);
+                                record.timestamp = parseInt(data.result.timestamp) * 1000;
+                                updateTimer();
+                            }
+                        }
+                    });
+                }
+            }
+
+            function updateCypher() {
+                if (new Date().getTime() - record.blockcypher.last > record.blockcypher.wait) {
+                    record.blockcypher.last = new Date().getTime();
+                    $.getJSON('https://api.blockcypher.com/v1/eth/main', function(data) {
+                        if ('hash' in data) {
+                            record.blockcypher.block = data.height;
+                            record.blockcypher.hash = '0x' + data.hash;
+                            countUpCypher.update(record.blockcypher.block);
+                            $('#hashCypher').html(record.blockcypher.hash.slice(0, 10) + '...');
+                            if (record.blockcypher.block === record.lastBlock) {
+                                $('#blockCypher').addClass('blue-text text-accent-2');
+                            }
+                        }
+                    });
+                }
+            }
+
+            function updateChain() {
+                if (new Date().getTime() - record.etherchain.last > record.etherchain.wait) {
+                    record.etherchain.last = new Date().getTime();
+                    $.getJSON('https://etherchain.org/api/blocks/0/1', function(data) {
+                        if ('data' in data) {
+                            record.etherchain.block = data.data[0].number;
+                            record.etherchain.hash = data.data[0].hash;
+                            countUpChain.update(record.etherchain.block);
+                            $('#hashChain').html(record.etherchain.hash.slice(0, 10) + '...');
+                            if (record.etherchain.block === record.lastBlock) {
+                                $('#blockChain').addClass('blue-text text-accent-2');
+                            }
+                            if (record.etherchain.block > record.lastBlock) {
+                                resetHighlight();
+                                $('#blockChain').addClass('blue-text text-accent-2');
+                                record.lastBlock = record.etherchain.block;
+                                record.gasLimit = data.data[0].gasLimit;
+                                record.difficulty = data.data[0].difficulty;
+                                record.timestamp = new Date(data.data[0].time).getTime();
+                                updateTimer();
+                            }
+                        }
+                    });
+                }
+            }
+
+            function updateEthrex() {
+                if (new Date().getTime() - record.ethrex.last > record.ethrex.wait) {
+                    record.ethrex.last = new Date().getTime();
+                    $.ajax({
+                        url: 'https://api.ethrex.io/v1/homestead/blocks?limit=1&offset=0&sort=number&direction=descending',
+                        type: 'GET',
+                        dataType: 'json',
+                        success: function(data) {
+                            if ('hash' in data[0]) {
+                                record.ethrex.block = data[0].number;
+                                record.ethrex.hash = data[0].hash;
+                                countUpChain.update(record.ethrex.block);
+                                $('#hashEthrex').html(record.ethrex.hash.slice(0, 10) + '...');
+                                if (record.ethrex.block === record.lastBlock) {
+                                    $('#blockEthrex').addClass('blue-text text-accent-2');
+                                }
+                                if (record.ethrex.block > record.lastBlock) {
+                                    resetHighlight();
+                                    $('#blockEthrex').addClass('blue-text text-accent-2');
+                                    record.lastBlock = record.ethrex.block;
+                                    record.gasLimit = data[0].gasLimit;
+                                    record.difficulty = data[0].difficulty;
+                                    record.timestamp = data[0].timestamp;
+                                    updateTimer();
+                                }
+                            }
+                        },
+                        beforeSend: setHeader
+                    });
+
+                    function setHeader(xhr) {
+                        xhr.setRequestHeader('Authorization', 'Bearer W3PXBuudhPwD8S76kssU');
+                    }
+                }
+            }
+
+            function updatePoloniex() {
+                if (new Date().getTime() - record.poloniex.last > record.poloniex.wait) {
+                    record.poloniex.last = new Date().getTime();
+                    $.getJSON('https://poloniex.com/public?command=returnTicker', function(data) {
+                        if ('BTC_ETH' in data) {
+                            record.ethbtc = parseFloat(data['BTC_ETH'].last);
+                        }
+                    });
+                }
+            }
+
+            function updateTimer() {
+                countUpCurrentBlock.update(record.lastBlock);
+                if (record.gasLimit > $('#gasLimit').text().replace(regex, '')) {
+                    upOrDown(true, '#gasLimit');
+                } else {
+                    upOrDown(false, '#gasLimit');
+                }
+                if (record.difficulty > $('#difficulty').text().replace(regex, '')) {
+                    upOrDown(true, '#difficulty');
+                } else {
+                    upOrDown(false, '#difficulty');
+                }
+                if (record.ethbtc > $('#ethbtc').text()) {
+                    upOrDown(true, '#ethbtc');
+                } else {
+                    upOrDown(false, '#ethbtc');
+                }
+                countUpGasLimit.update(record.gasLimit);
+                countUpDifficulty.update(record.difficulty);
+                countUpEthbtc.update(record.ethbtc);
+                if (hardForkBlock > record.lastBlock) {
+                    $('#countdown').countdown((hardForkBlock - record.lastBlock) * 14000 + new Date().getTime(), function(event) {
+                        if (event.type === 'finish') {
+                            $(this).html('');
+                        } else {
+                            $(this).html(event.strftime('%-D days %H:%M:%S'));
+                        }
+                    });
+                } else if (hardForkBlock + 5 > record.lastBlock) {
+                    $('#countdown').countdown(new Date().getTime(), function(event) {
+                        if (event.type === 'finish') {
+                            $(this).html('');
+                        } else {
+                            $(this).html(event.strftime('%-D days %H:%M:%S'));
+                        }
+                    });
+                }
+                $('#timeSinceLast').countdown(record.timestamp, {
+                    elapse: true
+                }).on('update.countdown', function(event) {
+                    $(this).html(event.strftime('%M:%S'));
+                });
+            }
+
+            function upOrDown(up, target) {
+                if (up) {
+                    $(target).addClass('green-text');
+                    $(target).removeClass('red-text');
+                    $(target + 'Arrow').addClass('green-text');
+                    $(target + 'Arrow').removeClass('red-text');
+                    $(target + 'Arrow').html('keyboard_arrow_up');
+                } else {
+                    $(target).removeClass('green-text');
+                    $(target).addClass('red-text');
+                    $(target + 'Arrow').removeClass('green-text');
+                    $(target + 'Arrow').addClass('red-text');
+                    $(target + 'Arrow').html('keyboard_arrow_down');
+                }
+            }
+
+            function resetHighlight() {
+                $('#blockInfura').removeClass('blue-text text-accent-2');
+                $('#blockEtherscan').removeClass('blue-text text-accent-2');
+                $('#blockCypher').removeClass('blue-text text-accent-2');
+                $('#blockChain').removeClass('blue-text text-accent-2');
+                $('#blockEthrex').removeClass('blue-text text-accent-2');
+            }
+
+            function updateAll() {
+                updateInfura();
+                updateEtherscan();
+                updateCypher();
+                updateChain();
+                updateEthrex();
+                updatePoloniex();
+            }
+        });
+
+        (function(i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function() {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-81430855-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+</body>
+
+</html>
