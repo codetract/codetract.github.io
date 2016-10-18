@@ -20,7 +20,7 @@
     <!--css-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/materialize/0.97.7/css/materialize.min.css" integrity="sha256-bZkavcZrFlXfus3527w/pLbvXgyqnrHbNdMpwNXf1dA=" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/fontawesome/4.6.3/css/font-awesome.min.css" integrity="sha256-AIodEDkC8V/bHBkfyxzolUMw57jeQ9CauwhVW6YJ9CA=" crossorigin="anonymous">
-    <link href="https://codetract.io/css/style.css" type="text/css" rel="stylesheet">
+    <link href="css/style.css" type="text/css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 
@@ -29,7 +29,7 @@
     <nav id="nav_f" class="blue-grey darken-4">
         <div class="container nav-wrapper">
             <a href="https://codetract.io" class="brand-logo">
-                <img class="nav-logo" src="https://codetract.io/img/logo.svg"></img>
+                <img class="nav-logo" src="img/logo.svg"></img>
                 <span class="blue-text text-accent-2">Code</span>Tract
             </a>
         </div>
@@ -333,6 +333,7 @@
                         type: 'GET',
                         dataType: 'json',
                         success: function(data) {
+                            console.log(data[0].hash);
                             if ('hash' in data[0]) {
                                 record.ethrex.block = data[0].number;
                                 record.ethrex.hash = data[0].hash;
